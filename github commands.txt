@@ -1,0 +1,16 @@
+git init (Initialized empty Git repository)
+git add .(ADD FILES IN STAG AREA)
+git commit -m "Commit message"
+git status(Check status WHETHER TRACK OR UNTRACK)
+git branch -M main (if branch is main/master) not needed actually
+git remote add origin (hhtps link from GitHub under Code section)(Local repo ko GitHub remote se connect karo)
+git push -u origin main( Local commits ko GitHub pe upload karo)
+
+Imagine you're a **photographer** submitting photos to a magazine.
+
+- You clicked 10 photos (made changes to files)
+- `git add .` → You **selected all 10 photos** and kept them in an envelope (staging area)
+- `git commit` → You **sealed the envelope** with a label/message
+- `git push` → You **posted/couriered** that envelope to the magazine (GitHub)
+
+So `git add .` is simply — *"yeh saari photos envelope mein daalo, submit karne ke liye ready karo."*
