@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Interview Study Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #eee;
+            margin-top: 40px;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 25px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e9f5ff;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 40px 0;
+        }
+        @media print {
+            body { background-color: white; margin: 0; }
+            .container { box-shadow: none; padding: 0; }
+            h1, h2, h3 { page-break-after: avoid; }
+            table { page-break-inside: auto; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SQL Interview Preparation Guide for Data Analysts</h1>
+<p>This guide covers the most critical SQL concepts and questions frequently asked during Data Analyst and Junior Data Analyst interviews.</p>
+<hr />
+<h2>1. Fundamentals &amp; Theory</h2>
+<h3>What is SQL and its Primary Uses?</h3>
+<ul>
+<li><strong>Standard Language:</strong> Structured Query Language (SQL) is the industry-standard language for interacting with Relational Database Management Systems (RDBMS).</li>
+<li><strong>Data Retrieval:</strong> Its most common use for analysts is querying databases to extract specific datasets for reporting and analysis.</li>
+<li><strong>Data Manipulation:</strong> It allows users to insert, update, and delete data records to maintain accurate information.</li>
+<li><strong>Schema Management:</strong> It provides tools to create, modify, and manage the structure of database objects like tables and indexes.</li>
+</ul>
+<h3>Difference between DDL and DML</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Feature</th>
+  <th style="text-align:left">Data Definition Language (DDL)</th>
+  <th style="text-align:left">Data Manipulation Language (DML)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><strong>Primary Purpose</strong></td>
+  <td style="text-align:left">Defines and modifies the database structure (schema).</td>
+  <td style="text-align:left">Manages and manipulates the actual data within tables.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Core Commands</strong></td>
+  <td style="text-align:left"><code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>TRUNCATE</code>.</td>
+  <td style="text-align:left"><code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Transaction</strong></td>
+  <td style="text-align:left">Changes are usually auto-committed and permanent.</td>
+  <td style="text-align:left">Changes can be rolled back before being committed.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Scope of Impact</strong></td>
+  <td style="text-align:left">Affects the entire table or database object.</td>
+  <td style="text-align:left">Affects specific rows or records within a table.</td>
+</tr>
+</tbody>
+</table>
+<h3>Normalization (1NF, 2NF, 3NF)</h3>
+<ul>
+<li><strong>1st Normal Form (1NF):</strong> Ensures that every column contains atomic (indivisible) values and each record is unique.</li>
+<li><strong>2nd Normal Form (2NF):</strong> Meets all 1NF requirements and ensures all non-key columns are fully dependent on the primary key.</li>
+<li><strong>3rd Normal Form (3NF):</strong> Meets all 2NF requirements and ensures no &quot;transitive dependencies&quot; (non-key columns depending on other non-key columns).</li>
+<li><strong>Goal:</strong> The primary objective of normalization is to reduce data redundancy and improve data integrity across the database.</li>
+</ul>
+<h3>Difference between OLTP and OLAP</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Feature</th>
+  <th style="text-align:left">OLTP (Online Transactional Processing)</th>
+  <th style="text-align:left">OLAP (Online Analytical Processing)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><strong>Objective</strong></td>
+  <td style="text-align:left">Optimized for fast, frequent business transactions.</td>
+  <td style="text-align:left">Optimized for complex data analysis and reporting.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Data Source</strong></td>
+  <td style="text-align:left">Real-time operational data from daily activities.</td>
+  <td style="text-align:left">Historical data consolidated from multiple OLTP sources.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Query Type</strong></td>
+  <td style="text-align:left">Simple, short queries affecting a few records.</td>
+  <td style="text-align:left">Complex queries involving large volumes of data and aggregations.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Design Pattern</strong></td>
+  <td style="text-align:left">Highly normalized to ensure fast writes and integrity.</td>
+  <td style="text-align:left">Often denormalized (Star/Snowflake) to speed up reads.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Data Retrieval &amp; Querying</h2>
+<h3>SQL Order of Execution</h3>
+<ul>
+<li><strong>Step 1 (Source):</strong> The database first identifies the source tables in the <code>FROM</code> and <code>JOIN</code> clauses.</li>
+<li><strong>Step 2 (Filter):</strong> It then applies row-level filters using the <code>WHERE</code> clause before any grouping occurs.</li>
+<li><strong>Step 3 (Group &amp; Aggregate):</strong> Data is grouped via <code>GROUP BY</code>, and aggregate functions (like <code>SUM</code> or <code>AVG</code>) are calculated.</li>
+<li><strong>Step 4 (Final Filter &amp; Sort):</strong> The <code>HAVING</code> clause filters groups, the <code>SELECT</code> picks columns, and <code>ORDER BY</code> sorts the final output.</li>
+</ul>
+<h3>Difference between WHERE and HAVING</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Feature</th>
+  <th style="text-align:left">WHERE Clause</th>
+  <th style="text-align:left">HAVING Clause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><strong>Filtering Level</strong></td>
+  <td style="text-align:left">Filters individual rows before they are grouped.</td>
+  <td style="text-align:left">Filters summarized groups after the GROUP BY clause.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Aggregates</strong></td>
+  <td style="text-align:left">Cannot be used with aggregate functions (e.g., <code>WHERE SUM(val) &gt; 10</code> fails).</td>
+  <td style="text-align:left">Specifically designed to work with aggregate functions.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Placement</strong></td>
+  <td style="text-align:left">Comes before the <code>GROUP BY</code> clause.</td>
+  <td style="text-align:left">Comes after the <code>GROUP BY</code> clause.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Performance</strong></td>
+  <td style="text-align:left">More efficient as it reduces the data size early in execution.</td>
+  <td style="text-align:left">Less efficient as it processes data after aggregation is complete.</td>
+</tr>
+</tbody>
+</table>
+<h3>SQL JOINs Explained</h3>
+<ul>
+<li><strong>INNER JOIN:</strong> Returns only the records where there is a matching value in both the left and right tables.</li>
+<li><strong>LEFT JOIN:</strong> Returns all records from the left table and the matched records from the right; unmatched right side returns NULL.</li>
+<li><strong>RIGHT JOIN:</strong> Returns all records from the right table and the matched records from the left; unmatched left side returns NULL.</li>
+<li><strong>FULL OUTER JOIN:</strong> Returns all records when there is a match in either the left or right table, filling with NULLs where matches are missing.</li>
+</ul>
+<h3>Difference between UNION and UNION ALL</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Feature</th>
+  <th style="text-align:left">UNION</th>
+  <th style="text-align:left">UNION ALL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><strong>Duplicates</strong></td>
+  <td style="text-align:left">Automatically removes duplicate rows from the final result set.</td>
+  <td style="text-align:left">Retains all rows, including duplicates, from all query parts.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Performance</strong></td>
+  <td style="text-align:left">Slower because it requires an internal sorting/distinct operation.</td>
+  <td style="text-align:left">Faster as it simply appends the results together without checking.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Data Volume</strong></td>
+  <td style="text-align:left">Typically produces a smaller, unique result set.</td>
+  <td style="text-align:left">Produces a larger result set containing every row found.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Use Case</strong></td>
+  <td style="text-align:left">Use when you need a distinct list of items from multiple sources.</td>
+  <td style="text-align:left">Use when you need a complete record count or performance is critical.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Advanced Querying</h2>
+<h3>Common Table Expressions (CTEs) vs. Subqueries</h3>
+<ul>
+<li><strong>Readability:</strong> CTEs use the <code>WITH</code> clause to define temporary results at the top, making complex queries much easier to read.</li>
+<li><strong>Reusability:</strong> A single CTE can be referenced multiple times within the same query, whereas subqueries must be rewritten.</li>
+<li><strong>Recursion:</strong> CTEs support recursive logic (self-referencing), which is impossible to achieve with standard subqueries.</li>
+<li><strong>Scope:</strong> Both are temporary; however, CTEs are often preferred in modern SQL for their &quot;top-down&quot; logical flow.</li>
+</ul>
+<h3>Window Functions: RANK vs. DENSE_RANK</h3>
+<ul>
+<li><strong>RANK():</strong> Assigns a rank to each row; if there is a tie, it skips the next rank (e.g., 1, 2, 2, 4).</li>
+<li><strong>DENSE_RANK():</strong> Assigns a rank to each row; if there is a tie, it does NOT skip the next rank (e.g., 1, 2, 2, 3).</li>
+<li><strong>ROW_NUMBER():</strong> Assigns a unique, sequential integer to every row regardless of ties (e.g., 1, 2, 3, 4).</li>
+<li><strong>Use Case:</strong> These are essential for finding the &quot;Top N&quot; items per category or calculating running totals.</li>
+</ul>
+<h3>LAG and LEAD Functions</h3>
+<ul>
+<li><strong>LAG Function:</strong> Allows you to access data from a previous row in the same result set without using a self-join.</li>
+<li><strong>LEAD Function:</strong> Allows you to access data from a subsequent row in the same result set, useful for forward-looking comparisons.</li>
+<li><strong>Offset Parameter:</strong> You can specify how many rows back or forward to look (default is 1).</li>
+<li><strong>Analysis:</strong> Analysts use these to calculate period-over-period growth or identify trends between consecutive events.</li>
+</ul>
+<hr />
+<h2>4. Performance &amp; Design</h2>
+<h3>Difference between DELETE, TRUNCATE, and DROP</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Feature</th>
+  <th style="text-align:left">DELETE</th>
+  <th style="text-align:left">TRUNCATE</th>
+  <th style="text-align:left">DROP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><strong>Type</strong></td>
+  <td style="text-align:left">DML (Data Manipulation)</td>
+  <td style="text-align:left">DDL (Data Definition)</td>
+  <td style="text-align:left">DDL (Data Definition)</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Action</strong></td>
+  <td style="text-align:left">Removes specific rows based on a condition.</td>
+  <td style="text-align:left">Removes all rows but keeps the table structure.</td>
+  <td style="text-align:left">Removes the entire table and its structure.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Rollback</strong></td>
+  <td style="text-align:left">Can be rolled back if used within a transaction.</td>
+  <td style="text-align:left">Generally cannot be rolled back (depends on DB engine).</td>
+  <td style="text-align:left">Cannot be rolled back.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Speed</strong></td>
+  <td style="text-align:left">Slowest (logs each row deletion).</td>
+  <td style="text-align:left">Faster than DELETE (minimal logging).</td>
+  <td style="text-align:left">Instant (removes object from schema).</td>
+</tr>
+</tbody>
+</table>
+<h3>Star Schema vs. Snowflake Schema</h3>
+<ul>
+<li><strong>Star Schema:</strong> A central &quot;Fact&quot; table surrounded by &quot;Dimension&quot; tables; it is the simplest and most common data warehousing design.</li>
+<li><strong>Snowflake Schema:</strong> An extension of the Star Schema where dimension tables are normalized into multiple related tables.</li>
+<li><strong>Read Performance:</strong> Star schemas are generally faster for reading and querying because they require fewer joins.</li>
+<li><strong>Maintenance:</strong> Snowflake schemas save storage space and reduce redundancy but are more complex to maintain and query.</li>
+</ul>
+<h3>Primary Key vs. Unique Constraint</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Feature</th>
+  <th style="text-align:left">Primary Key</th>
+  <th style="text-align:left">Unique Constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left"><strong>Null Values</strong></td>
+  <td style="text-align:left">Strictly does NOT allow NULL values in the column.</td>
+  <td style="text-align:left">Allows NULL values (usually only one, depending on the DB).</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Count</strong></td>
+  <td style="text-align:left">Only one Primary Key is allowed per table.</td>
+  <td style="text-align:left">Multiple Unique constraints can be defined on a single table.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Clustered Index</strong></td>
+  <td style="text-align:left">Automatically creates a clustered index by default.</td>
+  <td style="text-align:left">Creates a non-clustered index by default.</td>
+</tr>
+<tr>
+  <td style="text-align:left"><strong>Purpose</strong></td>
+  <td style="text-align:left">Uniquely identifies each record in the table for relationships.</td>
+  <td style="text-align:left">Ensures data integrity by preventing duplicate values in a column.</td>
+</tr>
+</tbody>
+</table>
+<h3>Handling NULL, Zero, and Empty Strings</h3>
+<ul>
+<li><strong>NULL Value:</strong> Represents a &quot;missing&quot; or &quot;unknown&quot; value; it is not equal to zero or an empty string.</li>
+<li><strong>Zero (0):</strong> A defined numerical value; arithmetic operations with zero are valid, unlike with NULL.</li>
+<li><strong>Empty String (' '):</strong> A string of zero length; it is a known value, whereas NULL is unknown.</li>
+<li><strong>Comparison:</strong> In SQL, <code>column = NULL</code> is always false; you must use the <code>IS NULL</code> operator to check for it.</li>
+</ul>
+<h3>Finding the Nth Highest Salary</h3>
+<ul>
+<li><strong>Method 1 (Subquery):</strong> Use a correlated subquery to count how many salaries are greater than the current one.</li>
+<li><strong>Method 2 (Window Function):</strong> Use <code>DENSE_RANK()</code> in a CTE to assign ranks to salaries and then filter where rank = N.</li>
+<li><strong>Method 3 (Offset/Limit):</strong> Use <code>ORDER BY Salary DESC</code> with <code>LIMIT 1 OFFSET N-1</code> (syntax varies by database).</li>
+<li><strong>Edge Cases:</strong> Always use <code>DISTINCT</code> or <code>DENSE_RANK</code> to handle duplicate salary values correctly.</li>
+</ul>
+<h3>Date and Time Manipulation</h3>
+<ul>
+<li><strong>Extraction:</strong> Functions like <code>EXTRACT()</code> or <code>YEAR()</code>, <code>MONTH()</code> are used to pull specific parts from a date.</li>
+<li><strong>Arithmetic:</strong> <code>DATEADD()</code> or <code>DATEDIFF()</code> allow you to calculate the time elapsed between two dates.</li>
+<li><strong>Formatting:</strong> <code>TO_CHAR()</code> or <code>FORMAT()</code> functions convert date objects into readable string formats.</li>
+<li><strong>Current Date:</strong> Each system has a reserved keyword (e.g., <code>GETDATE()</code>, <code>CURRENT_DATE</code>, <code>NOW()</code>) to fetch the system time.</li>
+</ul>
+<h3>COALESCE and CASE Statements</h3>
+<ul>
+<li><strong>COALESCE:</strong> Returns the first non-NULL value in a list; it is perfect for providing default values for missing data.</li>
+<li><strong>CASE Statement:</strong> SQL's version of IF-THEN logic; it allows for conditional data transformation within a query.</li>
+<li><strong>Data Cleaning:</strong> Analysts use COALESCE to replace NULLs with &quot;Unknown&quot; or 0 to avoid broken calculations.</li>
+<li><strong>Categorization:</strong> CASE statements are frequently used to bucket continuous variables (e.g., &quot;High&quot;, &quot;Medium&quot;, &quot;Low&quot; based on price).</li>
+</ul>
+
+    </div>
+</body>
+</html>
