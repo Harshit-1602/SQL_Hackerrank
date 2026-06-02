@@ -90,85 +90,85 @@ INSERT INTO Employee_Project VALUES
 ## 2. SQL Practice Questions
 
 ### SELECT
-1. Display all employee details.
-SELECT * FROM Employees;
+1. **Display all employee details.**
+   SELECT * FROM Employees;
 
-2. Display only employee name.
-SELECT emp_name FROM Employees;
+2. **Display only employee name.**
+   SELECT emp_name FROM Employees;
 
-3. Display only employee name and salary.
-SELECT emp_name, salary FROM Employees;
+3. **Display only employee name and salary.**
+   SELECT emp_name, salary FROM Employees;
 
-4. Display all project names.
-SELECT project_name FROM Projects;
+4. **Display all project names.**
+   SELECT project_name FROM Projects;
 
-5. Display employee IDs and cities.
-SELECT emp_id, city FROM Employees;
+5. **Display employee IDs and cities.**
+   SELECT emp_id, city FROM Employees;
 
-6. Display project budgets.
-SELECT budget FROM Projects;
+6. **Display project budgets.**
+   SELECT budget FROM Projects;
 
-7. Display hire dates of all employees.
-SELECT emp_name, hire_date 
-FROM Employees;
+7. **Display hire dates of all employees.**
+   SELECT emp_name, hire_date 
+   FROM Employees;
 
-8. Display employee names and department IDs.
-SELECT emp_name, dept_id 
-FROM Employees;
+8. **Display employee names and department IDs.**
+   SELECT emp_name, dept_id 
+   FROM Employees;
 
-9. Display all columns from Departments table.
-SELECT * FROM Departments;
+9. **Display all columns from Departments table.**
+   SELECT * FROM Departments;
 
 ### WHERE
-1. Find employees earning more than 70000.
-SELECT emp_id, salary 
-FROM Employees
-WHERE salary > 70000;
+1. **Find employees earning more than 70000.**
+   SELECT emp_id, salary 
+   FROM Employees
+   WHERE salary > 70000;
 
-2. Find employees earning less than 60000.
-SELECT emp_id, salary
-FROM Employees
-WHERE salary < 60000;
+2. **Find employees earning less than 60000.**
+   SELECT emp_id, salary
+   FROM Employees
+   WHERE salary < 60000;
 
-3. Find employees from Chicago.
-SELECT emp_name, city
-FROM Employees
-WHERE city = 'Chicago';
+3. **Find employees from Chicago.**
+   SELECT emp_name, city
+   FROM Employees
+   WHERE city = 'Chicago';
 
-4. Find employees from Boston.
-SELECT emp_name, city
-FROM Employees
-WHERE city = 'Boston';
+4. **Find employees from Boston.**
+   SELECT emp_name, city
+   FROM Employees
+   WHERE city = 'Boston';
 
-5. Find employees hired after 2021-01-01.
-SELECT emp_name, hire_date
-FROM Employees 
-WHERE hire_date > '2021-01-01';
+5. **Find employees hired after 2021-01-01.**
+   SELECT emp_name, hire_date
+   FROM Employees 
+   WHERE hire_date > '2021-01-01';
 
-6. Find employees hired before 2020-01-01.
-SELECT emp_name, hire_date
-FROM Employees
-WHERE hire_date < '2020-01-01';
+6. **Find employees hired before 2020-01-01.**
+   SELECT emp_name, hire_date
+   FROM Employees
+   WHERE hire_date < '2020-01-01';
 
-7. Find employees in department 1.
-SELECT emp_name, dept_id 
-FROM Employees 
-WHERE dept_id = 1;
+7. **Find employees in department 1.**
+   SELECT emp_name, dept_id 
+   FROM Employees 
+   WHERE dept_id = 1;
 
-8. Find female employees.
-SELECT emp_name, gender
-FROM Employees
-WHERE gender = 'Female';
+8. **Find female employees.**
+   SELECT emp_name, gender
+   FROM Employees
+   WHERE gender = 'Female';
 
-9. Find employees earning exactly 75000.
-SELECT emp_id, emp_name, salary
-FROM Employees
-WHERE salary = 75000;
+9. **Find employees earning exactly 75000.**
+   SELECT emp_id, emp_name, salary
+   FROM Employees
+   WHERE salary = 75000;
 
-10. Find employees from Seattle.
-SELECT emp_name, city
-FROM Employees
-WHERE city = 'Seattle';
+10. **Find employees from Seattle.**
+    SELECT emp_name, city
+    FROM Employees
+    WHERE city = 'Seattle';
 
 ### ORDER BY
 1. Display employees sorted by salary ascending.
