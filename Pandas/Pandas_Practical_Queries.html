@@ -1,0 +1,106 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pandas Practical Query Bank</title>
+        <style>
+            body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 40px auto; background-color: #f0f2f5; }
+            .container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+            h1, h2 { color: #e67e22; border-bottom: 2px solid #e67e22; padding-bottom: 10px; }
+            h3 { color: #2d3436; margin-top: 30px; background: #f8f9fa; padding: 10px; border-left: 5px solid #e67e22; }
+            ol { padding-left: 20px; }
+            li { margin-bottom: 15px; font-weight: 500; }
+            code { 
+                display: block; 
+                background: #2d3436; 
+                color: #fab1a0; 
+                padding: 15px; 
+                border-radius: 5px; 
+                margin-top: 5px;
+                font-family: 'Consolas', monospace;
+                font-size: 0.95em;
+                white-space: pre-wrap;
+            }
+            .note { font-size: 0.9em; color: #636e72; font-style: italic; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Pandas Practical Query Bank</h1>
+            <p class="note">Essential queries for Data Analyst interviews. Focus on logic and syntax.</p>
+            <h1>Pandas Practical Exercises (Top 50 Operations)</h1>
+<p>This document contains 50 essential Pandas operations that every Data Analyst should master. They are categorized to mirror common SQL workflows.</p>
+<h3>1. Basic Data Exploration</h3>
+<ol>
+<li><strong>Read CSV:</strong> <code>df = pd.read_csv('worker.csv')</code></li>
+<li><strong>First 5 Rows:</strong> <code>df.head()</code></li>
+<li><strong>Last 5 Rows:</strong> <code>df.tail()</code></li>
+<li><strong>Data Info:</strong> <code>df.info()</code></li>
+<li><strong>Statistical Summary:</strong> <code>df.describe()</code></li>
+<li><strong>Column Names:</strong> <code>df.columns</code></li>
+<li><strong>Shape of Data:</strong> <code>df.shape</code></li>
+<li><strong>Check for Nulls:</strong> <code>df.isnull().sum()</code></li>
+<li><strong>Unique Values:</strong> <code>df['department'].unique()</code></li>
+<li><strong>Value Counts:</strong> <code>df['department'].value_counts()</code></li>
+</ol>
+<h3>2. Selection &amp; Filtering</h3>
+<ol start="11">
+<li><strong>Select Column:</strong> <code>df['first_name']</code></li>
+<li><strong>Select Multiple:</strong> <code>df[['first_name', 'last_name']]</code></li>
+<li><strong>Selection by Label (loc):</strong> <code>df.loc[0:10, 'salary']</code></li>
+<li><strong>Selection by Position (iloc):</strong> <code>df.iloc[0:10, 0:3]</code></li>
+<li><strong>Filter by Condition:</strong> <code>df[df['salary'] &gt; 100000]</code></li>
+<li><strong>Filter (IN):</strong> <code>df[df['first_name'].isin(['Vipul', 'Satish'])]</code></li>
+<li><strong>Filter (NOT IN):</strong> <code>df[~df['first_name'].isin(['Vipul', 'Satish'])]</code></li>
+<li><strong>Between Range:</strong> <code>df[df['salary'].between(100000, 500000)]</code></li>
+<li><strong>Multiple Conditions:</strong> <code>df[(df['salary'] &gt; 50000) &amp; (df['department'] == 'Admin')]</code></li>
+<li><strong>Filter by Month/Year:</strong> <code>df[(df['joining_date'].dt.year == 2014) &amp; (df['joining_date'].dt.month == 2)]</code></li>
+</ol>
+<h3>3. String Manipulation</h3>
+<ol start="21">
+<li><strong>Uppercase:</strong> <code>df['first_name'].str.upper()</code></li>
+<li><strong>Lowercase:</strong> <code>df['first_name'].str.lower()</code></li>
+<li><strong>Contains String:</strong> <code>df[df['department'].str.contains('Admin')]</code></li>
+<li><strong>Starts With:</strong> <code>df[df['first_name'].str.startswith('A')]</code></li>
+<li><strong>String Slicing:</strong> <code>df['first_name'].str[:3]</code></li>
+<li><strong>Replace String:</strong> <code>df['first_name'].str.replace('a', 'A')</code></li>
+<li><strong>Trim Whitespace:</strong> <code>df['first_name'].str.strip()</code></li>
+<li><strong>Concatenate Strings:</strong> <code>df['first_name'] + ' ' + df['last_name']</code></li>
+<li><strong>String Length:</strong> <code>df['department'].str.len()</code></li>
+<li><strong>Find Position:</strong> <code>df['first_name'].str.find('B')</code></li>
+</ol>
+<h3>4. Data Cleaning &amp; Transformation</h3>
+<ol start="31">
+<li><strong>Drop Columns:</strong> <code>df.drop(columns=['column_name'])</code></li>
+<li><strong>Rename Columns:</strong> <code>df.rename(columns={'old_name': 'new_name'})</code></li>
+<li><strong>Change Data Type:</strong> <code>df['salary'] = df['salary'].astype(float)</code></li>
+<li><strong>To Datetime:</strong> <code>df['joining_date'] = pd.to_datetime(df['joining_date'])</code></li>
+<li><strong>Drop Duplicates:</strong> <code>df.drop_duplicates()</code></li>
+<li><strong>Fill Nulls:</strong> <code>df.fillna(0)</code></li>
+<li><strong>Drop Nulls:</strong> <code>df.dropna()</code></li>
+<li><strong>Reset Index:</strong> <code>df.reset_index(drop=True)</code></li>
+<li><strong>Sort Values:</strong> <code>df.sort_values(by=['salary', 'first_name'], ascending=[False, True])</code></li>
+<li><strong>Map Values:</strong> <code>df['gender'].map({'M': 1, 'F': 0})</code></li>
+</ol>
+<h3>5. Aggregation &amp; Grouping</h3>
+<ol start="41">
+<li><strong>Group By Count:</strong> <code>df.groupby('department').size()</code></li>
+<li><strong>Group By Aggregation:</strong> <code>df.groupby('department')['salary'].agg(['sum', 'mean', 'count'])</code></li>
+<li><strong>Pivot Table:</strong> <code>df.pivot_table(index='department', values='salary', aggfunc='mean')</code></li>
+<li><strong>Cross Tabulation:</strong> <code>pd.crosstab(df['department'], df['salary_bracket'])</code></li>
+<li><strong>Apply Function:</strong> <code>df['salary'].apply(lambda x: x * 1.1)  # 10% raise</code></li>
+</ol>
+<h3>6. Merging &amp; Advanced</h3>
+<ol start="46">
+<li><strong>Merge (Join):</strong> <code>pd.merge(df1, df2, on='worker_id', how='inner')</code></li>
+<li><strong>Concatenate (Union):</strong> <code>pd.concat([df1, df2], axis=0)</code></li>
+<li><strong>Ranking:</strong> <code>df['rank'] = df['salary'].rank(method='dense', ascending=False)</code></li>
+<li><strong>Shift (Lag):</strong> <code>df['prev_salary'] = df['salary'].shift(1)</code></li>
+<li><strong>Rolling Mean:</strong> <code>df['rolling_avg'] = df['salary'].rolling(window=7).mean()</code></li>
+</ol>
+
+        </div>
+    </body>
+    </html>
+    

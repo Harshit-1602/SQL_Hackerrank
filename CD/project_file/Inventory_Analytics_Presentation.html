@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vermin Inventory Analytics System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .slideshow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .slide {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            min-height: 500px;
+            animation: fadeIn 0.5s;
+        }
+        .slide.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #555;
+            font-size: 1.3em;
+            margin: 15px 0;
+        }
+        p, li {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .tech-item {
+            background: #667eea;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        .stat-box {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            min-width: 150px;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .architecture {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .diagram {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 10px;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+        }
+        .slide-counter {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+        <h1>📦 Vermin Inventory Analytics System</h1>
+        <div class="highlight">
+            <h3 style="color: white; margin: 0;">A Comprehensive Inventory Management & Analytics Platform</h3>
+            <p style="color: white;">Built with Python, Streamlit, and Power BI</p>
+        </div>
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">5+</div>
+                <div>Core Features</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div>Technologies</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div>Web-Based</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Project Overview -->
+    <div class="slide">
+        <h2>🔍 Project Overview</h2>
+        <p>The <strong>Vermin Inventory Analytics System</strong> is a powerful web-based application designed to streamline inventory data management and provide real-time analytics through interactive visualizations.</p>
+
+        <h3>Problem Statement</h3>
+        <ul>
+            <li>Manual inventory tracking is error-prone and time-consuming</li>
+            <li>Difficulty in analyzing large datasets</li>
+            <li>Limited visibility into inventory trends</li>
+            <li>Need for automated data cleaning and processing</li>
+        </ul>
+
+        <h3>Solution</h3>
+        <ul>
+            <li>Automated data cleaning and preprocessing</li>
+            <li>User-friendly web interface for CRUD operations</li>
+            <li>SQL-based querying for custom analysis</li>
+            <li>Power BI integration for visual analytics</li>
+        </ul>
+    </div>
+
+    <!-- Slide 3: Key Features -->
+    <div class="slide">
+        <h2>⚡ Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>📊 Data Processing</h3>
+                <p>Automatic data cleaning, deduplication, and handling of missing values with smart defaults</p>
+            </div>
+            <div class="feature-card">
+                <h3>➕➖ CRUD Operations</h3>
+                <p>Complete Create, Read, Update, Delete functionality for all inventory records</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔍 SQL Query Interface</h3>
+                <p>Run custom SQL queries directly on inventory data for advanced analytics</p>
+            </div>
+            <div class="feature-card">
+                <h3>📈 Power BI Integration</h3>
+                <p>Embed interactive Power BI dashboards and export data to Excel format</p>
+            </div>
+            <div class="feature-card">
+                <h3>💾 Data Export</h3>
+                <p>Download processed data as CSV files or bundle multiple tables as ZIP</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔗 Multi-Table Support</h3>
+                <p>Handle multiple inventory sheets with unified interface</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Technology Stack -->
+    <div class="slide">
+        <h2>🛠️ Technology Stack</h2>
+        <div class="tech-stack">
+            <div class="tech-item">Python</div>
+            <div class="tech-item">Streamlit</div>
+            <div class="tech-item">Pandas</div>
+            <div class="tech-item">NumPy</div>
+            <div class="tech-item">SQLite</div>
+            <div class="tech-item">Power BI</div>
+            <div class="tech-item">Excel</div>
+        </div>
+
+        <h3>Architecture</h3>
+        <div class="architecture">
+            <div class="diagram">
+                <strong>Excel/CSV Data Source</strong>
+                <div class="arrow">↓</div>
+                <strong>Streamlit Web App</strong>
+                <div class="arrow">↓</div>
+                <strong>Data Processing Engine (Pandas)</strong>
+                <div class="arrow">↓</div>
+                <strong>SQLite In-Memory Database</strong>
+                <div class="arrow">↓</div>
+                <strong>Power BI & Export</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Data Flow -->
+    <div class="slide">
+        <h2>🔄 Data Flow & Processing</h2>
+
+        <h3>Data Pipeline</h3>
+        <ul>
+            <li><strong>Input:</strong> Excel files with multiple inventory sheets</li>
+            <li><strong>Cleaning:</strong> Automatic column standardization, duplicate removal, null handling</li>
+            <li><strong>Storage:</strong> SQLite in-memory database for SQL queries</li>
+            <li><strong>Output:</strong> CSV, ZIP, Power BI visualizations</li>
+        </ul>
+
+        <h3>Key Functions</h3>
+        <ul>
+            <li><code>clean_data()</code> - Normalizes columns, removes duplicates, fills missing values</li>
+            <li><code>get_next_id_value()</code> - Smart auto-increment for IDs</li>
+            <li><code>get_numeric_bounds_and_default()</code> - Safe input validation</li>
+            <li><code>save_tables()</code> - Multi-sheet Excel export</li>
+        </ul>
+    </div>
+
+    <!-- Slide 6: User Interface -->
+    <div class="slide">
+        <h2>🖥️ User Interface Features</h2>
+
+        <h3>Sidebar Controls</h3>
+        <ul>
+            <li>Process current or all tables</li>
+            <li>Download live Excel files</li>
+            <li>Power BI embed URL configuration</li>
+        </ul>
+
+        <h3>Main Tabs</h3>
+        <ul>
+            <li><strong>Data Sheets:</strong> View, clean, and manage individual tables</li>
+            <li><strong>SQL Query:</strong> Write and execute custom queries</li>
+            <li><strong>Power BI Report:</strong> Embed and view reports</li>
+        </ul>
+
+        <h3>Interactive Features</h3>
+        <ul>
+            <li>Real-time data validation</li>
+            <li>Auto-generated ID values</li>
+            <li>Safe numeric bounds for inputs</li>
+            <li>Preview before delete/update</li>
+        </ul>
+    </div>
+
+    <!-- Slide 7: System Capabilities -->
+    <div class="slide">
+        <h2>📋 System Capabilities</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Data Validation</h3>
+                <p>Automatic type detection and safe input bounds</p>
+            </div>
+            <div class="feature-card">
+                <h3>Error Handling</h3>
+                <p>Graceful error messages and recovery options</p>
+            </div>
+            <div class="feature-card">
+                <h3>Multi-format Export</h3>
+                <p>CSV, ZIP, Excel formats supported</p>
+            </div>
+            <div class="feature-card">
+                <h3>Visual Integration</h3>
+                <p>Power BI embedding with embed URL validation</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Project Files -->
+    <div class="slide">
+        <h2>📁 Project Files</h2>
+
+        <ul>
+            <li><strong>app.py</strong> - Main Streamlit application (710+ lines)</li>
+            <li><strong>Inventory_Analytics_Data_Custom.xlsx</strong> - Source data file</li>
+            <li><strong>Inventory_vermin.pbix</strong> - Power BI report template</li>
+            <li><strong>processed_inventory_data.csv</strong> - Sample processed output</li>
+        </ul>
+
+        <h3>Project Statistics</h3>
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">710+</div>
+                <div>Lines of Code</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">8+</div>
+                <div>Modules/Functions</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div>Data Files</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Future Enhancements -->
+    <div class="slide">
+        <h2>🚀 Future Enhancements</h2>
+
+        <ul>
+            <li><strong>AI-Powered Predictions:</strong> Machine learning for demand forecasting</li>
+            <li><strong>User Authentication:</strong> Role-based access control</li>
+            <li><strong>Cloud Deployment:</strong> Deploy on AWS/Azure for remote access</li>
+            <li><strong>Real-time Sync:</strong> Live data synchronization with external systems</li>
+            <li><strong>Advanced Visualizations:</strong> More charts and interactive dashboards</li>
+            <li><strong>API Integration:</strong> RESTful API for third-party integrations</li>
+        </ul>
+    </div>
+
+    <!-- Slide 10: Conclusion -->
+    <div class="slide">
+        <h2>✅ Conclusion</h2>
+        <div class="highlight">
+            <h3 style="color: white;">The Vermin Inventory Analytics System demonstrates proficiency in:</h3>
+            <p style="color: white;">Python Development | Data Processing | Web Application Design | Business Intelligence</p>
+        </div>
+
+        <h3>Key Takeaways</h3>
+        <ul>
+            <li>Full-stack data application development</li>
+            <li>Integration with business intelligence tools</li>
+            <li>User-friendly interface design</li>
+            <li>Data pipeline construction</li>
+        </ul>
+
+        <div class="contact-info">
+            <p><strong>Thank You!</strong></p>
+            <p>Built with passion for data analytics</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="nav-buttons">
+    <button class="nav-btn" onclick="changeSlide(-1)">← Previous</button>
+    <button class="nav-btn" onclick="changeSlide(1)">Next →</button>
+</div>
+
+<div class="slide-counter">
+    Slide <span id="currentSlide">1</span> of <span id="totalSlides">10</span>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    document.getElementById('totalSlides').textContent = totalSlides;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+        document.getElementById('currentSlide').textContent = currentSlide + 1;
+    }
+
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+</script>
+
+</body>
+</html>
